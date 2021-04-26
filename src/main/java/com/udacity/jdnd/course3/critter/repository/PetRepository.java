@@ -8,6 +8,4 @@ import java.util.List;
 public interface PetRepository extends JpaRepository<Pet, Long> {
 
     List<Pet> findAllByCustomerId(Long id);
-
-    //List<Pet> findAllByOwner(Long ownerId);
 }

@@ -25,7 +25,6 @@ public final class EntityHelper {
         CustomerDTO customerDTO = new CustomerDTO();
         BeanUtils.copyProperties(customer, customerDTO);
         if (customer.getPets()!=null && customer.getPets().size()>0)
-            //customer.getPets().forEach(pet -> customerDTO.getPetIds().add(pet.getId()));
             customerDTO.setPetIds(customer.getPets().stream().map(Pet::getId).collect(Collectors.toList()));
         return customerDTO;
     }

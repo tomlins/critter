@@ -16,16 +16,10 @@ public class Schedule {
 
     private LocalDate date;
 
-    //@OneToMany(mappedBy = "schedule", fetch = FetchType.LAZY)
-    //@JoinColumn(name = "schedule_fk")
     @OneToMany
     private List<Employee> employee;
-
-    //@OneToMany(mappedBy = "schedule", fetch = FetchType.LAZY)
-    //@JoinColumn(name = "schedule_fk")
     @OneToMany
     private List<Pet> pets;
-
     @ElementCollection
     private Set<EmployeeSkill> activities;
 
@@ -33,8 +27,7 @@ public class Schedule {
         // Default public constructor
     }
 
-    public Schedule(Long id, LocalDate date, List<Pet> pets, Set<EmployeeSkill> activities) {
-        this.id = id;
+    public Schedule(LocalDate date, List<Pet> pets, Set<EmployeeSkill> activities) {
         this.date = date;
         this.pets = pets;
         this.activities = activities;
