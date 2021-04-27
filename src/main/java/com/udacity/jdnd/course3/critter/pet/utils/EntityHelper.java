@@ -6,7 +6,7 @@ import org.springframework.beans.BeanUtils;
 
 public class EntityHelper {
 
-    public static Pet petDTOToEntity(PetDTO petDTO) {
+   public static Pet petDTOToEntity(PetDTO petDTO) {
         Pet pet = new Pet();
         BeanUtils.copyProperties(petDTO, pet);
         return pet;

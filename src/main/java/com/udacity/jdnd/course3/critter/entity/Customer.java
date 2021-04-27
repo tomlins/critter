@@ -3,6 +3,7 @@ package com.udacity.jdnd.course3.critter.entity;
 import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -46,5 +47,12 @@ public class Customer extends User {
 
     public void setPets(List<Pet> pets) {
         this.pets = pets;
+    }
+
+    public void addPet(Pet pet) {
+        if (pets == null) {
+            pets = new ArrayList<>();
+        }
+        pets.add(pet);
     }
 }

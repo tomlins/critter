@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +29,12 @@ public class PetService {
     public Pet save(Pet pet, Long ownerId) {
         Customer customer = customerRepository.getOne(ownerId);
         pet.setCustomer(customer);
-        return petRepository.save(pet);
+        Pet savedPet = petRepository.save(pet);
+
+        customer = savedPet.getCustomer();
+        customer.addPet(savedPet);
+        customerRepository.save(customer);
+        return savedPet;
     }
 
     public List<Pet> getAll() {
