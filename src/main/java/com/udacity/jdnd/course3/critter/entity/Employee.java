@@ -1,9 +1,9 @@
 package com.udacity.jdnd.course3.critter.entity;
 
 import com.udacity.jdnd.course3.critter.user.EmployeeSkill;
-import org.hibernate.annotations.Nationalized;
 
-import javax.persistence.*;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
 import java.time.DayOfWeek;
 import java.util.Set;
 
@@ -14,7 +14,6 @@ public class Employee extends User {
     private Set<EmployeeSkill> skills;
     @ElementCollection
     private Set<DayOfWeek> daysAvailable;
-
 
     public Employee() {
         // Default public constructor
@@ -41,4 +40,5 @@ public class Employee extends User {
     public void setDaysAvailable(Set<DayOfWeek> daysAvailable) {
         this.daysAvailable = daysAvailable;
     }
+
 }

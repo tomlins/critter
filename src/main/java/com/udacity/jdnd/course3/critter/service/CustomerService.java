@@ -4,7 +4,6 @@ import com.udacity.jdnd.course3.critter.entity.Customer;
 import com.udacity.jdnd.course3.critter.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -20,5 +19,9 @@ public class CustomerService {
 
     public List<Customer> getAll() {
         return customerRepository.findAll();
+    }
+
+    public Customer getCustomerByPet(long petId) {
+        return customerRepository.findCustomerByPetId(petId);
     }
 }

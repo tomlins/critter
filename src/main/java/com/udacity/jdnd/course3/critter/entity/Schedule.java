@@ -4,7 +4,6 @@ import com.udacity.jdnd.course3.critter.user.EmployeeSkill;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -16,10 +15,11 @@ public class Schedule {
 
     private LocalDate date;
 
-    @OneToMany
-    private List<Employee> employee;
-    @OneToMany
-    private List<Pet> pets;
+    @ManyToMany
+    private Set<Employee> employees;
+    @ManyToMany
+    private Set<Pet> pets;
+
     @ElementCollection
     private Set<EmployeeSkill> activities;
 
@@ -27,17 +27,18 @@ public class Schedule {
         // Default public constructor
     }
 
-    public Schedule(LocalDate date, List<Pet> pets, Set<EmployeeSkill> activities) {
+    public Schedule(LocalDate date, Set<Pet> pets, Set<Employee> employees, Set<EmployeeSkill> activities) {
         this.date = date;
         this.pets = pets;
         this.activities = activities;
+        this.employees = employees;
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void ListId(Long id) {
         this.id = id;
     }
 
@@ -49,19 +50,19 @@ public class Schedule {
         this.date = date;
     }
 
-    public List<Employee> getEmployee() {
-        return employee;
+    public Set<Employee> getEmployees() {
+        return employees;
     }
 
-    public void setEmployee(List<Employee> employee) {
-        this.employee = employee;
+    public void setEmployees(Set<Employee> employees) {
+        this.employees = employees;
     }
 
-    public List<Pet> getPets() {
+    public Set<Pet> getPets() {
         return pets;
     }
 
-    public void setPets(List<Pet> pets) {
+    public void setPets(Set<Pet> pets) {
         this.pets = pets;
     }
 

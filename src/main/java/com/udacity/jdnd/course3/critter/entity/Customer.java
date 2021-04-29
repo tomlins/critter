@@ -1,8 +1,9 @@
 package com.udacity.jdnd.course3.critter.entity;
 
-import org.hibernate.annotations.Nationalized;
-
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
