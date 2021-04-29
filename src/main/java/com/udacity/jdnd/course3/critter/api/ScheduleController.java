@@ -1,9 +1,9 @@
 package com.udacity.jdnd.course3.critter.api;
 
-import com.udacity.jdnd.course3.critter.entity.Employee;
-import com.udacity.jdnd.course3.critter.entity.Pet;
-import com.udacity.jdnd.course3.critter.entity.Schedule;
-import com.udacity.jdnd.course3.critter.schedule.ScheduleDTO;
+import com.udacity.jdnd.course3.critter.domain.entity.Employee;
+import com.udacity.jdnd.course3.critter.domain.entity.Pet;
+import com.udacity.jdnd.course3.critter.domain.entity.Schedule;
+import com.udacity.jdnd.course3.critter.domain.dto.ScheduleDTO;
 import com.udacity.jdnd.course3.critter.service.EmployeeService;
 import com.udacity.jdnd.course3.critter.service.PetService;
 import com.udacity.jdnd.course3.critter.service.ScheduleService;
@@ -59,6 +59,11 @@ public class ScheduleController {
         return entityArrayToScheduleDTOArray(scheduleList);
     }
 
+    /**
+     * Helper method to convert ScheduleDTO object to its corresponding entity object
+     * @param scheduleDTO
+     * @return schedule
+     */
     private Schedule scheduleDTOToEntity(ScheduleDTO scheduleDTO) {
         Schedule schedule = new Schedule();
         BeanUtils.copyProperties(scheduleDTO, schedule);
@@ -79,6 +84,11 @@ public class ScheduleController {
         return schedule;
     }
 
+    /**
+     * Helper method to convert Schedule entity to its corresponding DTO object
+     * @param schedule
+     * @return scheduleDTO
+     */
     private ScheduleDTO entityToScheduleDTO(Schedule schedule) {
         ScheduleDTO scheduleDTO = new ScheduleDTO();
         BeanUtils.copyProperties(schedule, scheduleDTO);
@@ -99,6 +109,11 @@ public class ScheduleController {
         return scheduleDTO;
     }
 
+    /**
+     * Help method to convert an array of Schedule entities into an array of scheduleDTO
+     * @param scheduleList
+     * @return scheduleDTOList
+     */
     private List<ScheduleDTO> entityArrayToScheduleDTOArray(List<Schedule> scheduleList) {
         List<ScheduleDTO> scheduleDTOList = new ArrayList<>();
         for (Schedule schedule : scheduleList) {
@@ -107,6 +122,11 @@ public class ScheduleController {
         return scheduleDTOList;
     }
 
+    /**
+     * Helper method to convert an array of scheduleDTO objects to an array of Schedule entities
+     * @param scheduleDTOList
+     * @return
+     */
     private List<Schedule> scheduleDTOArrayToEntityArray(List<ScheduleDTO> scheduleDTOList) {
         List<Schedule> scheduleList = new ArrayList<>();
         for (ScheduleDTO scheduleDTO : scheduleDTOList) {

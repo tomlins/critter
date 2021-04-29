@@ -1,4 +1,4 @@
-package com.udacity.jdnd.course3.critter.entity;
+package com.udacity.jdnd.course3.critter.domain.entity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;

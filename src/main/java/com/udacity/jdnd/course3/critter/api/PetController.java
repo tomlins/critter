@@ -1,7 +1,7 @@
 package com.udacity.jdnd.course3.critter.api;
 
-import com.udacity.jdnd.course3.critter.entity.Pet;
-import com.udacity.jdnd.course3.critter.pet.PetDTO;
+import com.udacity.jdnd.course3.critter.domain.entity.Pet;
+import com.udacity.jdnd.course3.critter.domain.dto.PetDTO;
 import com.udacity.jdnd.course3.critter.service.PetService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,12 +44,22 @@ public class PetController {
         return petDTOList;
     }
 
+    /**
+     * Helper method to convert PetDTO object into Pet entity
+     * @param petDTO
+     * @return pet
+     */
     private Pet petDTOToEntity(PetDTO petDTO) {
         Pet pet = new Pet();
         BeanUtils.copyProperties(petDTO, pet);
         return pet;
     }
 
+    /**
+     * Helper method to convert Pet entity to its corresponding DTO object
+     * @param pet
+     * @return petDTO
+     */
     private PetDTO entityToPetDTO(Pet pet) {
         PetDTO petDTO = new PetDTO();
         BeanUtils.copyProperties(pet, petDTO);
@@ -57,6 +67,11 @@ public class PetController {
         return petDTO;
     }
 
+    /**
+     * Helper method to convert an array of Pet entities into an array of PetDTO objects
+     * @param petList
+     * @return
+     */
     private List<PetDTO> entityArrayToPetDTOArray(List<Pet> petList) {
         List<PetDTO> petDTOList = new ArrayList<>();
         for (Pet pet : petList) {

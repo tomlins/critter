@@ -1,13 +1,13 @@
 package com.udacity.jdnd.course3.critter.api;
 
-import com.udacity.jdnd.course3.critter.entity.Customer;
-import com.udacity.jdnd.course3.critter.entity.Employee;
-import com.udacity.jdnd.course3.critter.entity.Pet;
+import com.udacity.jdnd.course3.critter.domain.entity.Customer;
+import com.udacity.jdnd.course3.critter.domain.entity.Employee;
+import com.udacity.jdnd.course3.critter.domain.entity.Pet;
 import com.udacity.jdnd.course3.critter.service.CustomerService;
 import com.udacity.jdnd.course3.critter.service.EmployeeService;
-import com.udacity.jdnd.course3.critter.user.CustomerDTO;
-import com.udacity.jdnd.course3.critter.user.EmployeeDTO;
-import com.udacity.jdnd.course3.critter.user.EmployeeRequestDTO;
+import com.udacity.jdnd.course3.critter.domain.dto.CustomerDTO;
+import com.udacity.jdnd.course3.critter.domain.dto.EmployeeDTO;
+import com.udacity.jdnd.course3.critter.domain.dto.EmployeeRequestDTO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -79,12 +79,22 @@ public class UserController {
         return employees.stream().map(employee -> entityToEmployeeDTO(employee)).collect(Collectors.toList());
     }
 
+    /**
+     * Helper method to convert CustomerDTO into a Customer entity
+     * @param customerDTO
+     * @return customer
+     */
     private Customer customerDTOToEntity(CustomerDTO customerDTO) {
         Customer customer = new Customer();
         BeanUtils.copyProperties(customerDTO, customer);
         return customer;
     }
 
+    /**
+     * Helper method to convert a Customer entity into a CustomerDTO
+     * @param customer
+     * @return customerDTO
+     */
     private CustomerDTO entityToCustomerDTO(Customer customer) {
         CustomerDTO customerDTO = new CustomerDTO();
         BeanUtils.copyProperties(customer, customerDTO);
@@ -93,12 +103,22 @@ public class UserController {
         return customerDTO;
     }
 
+    /**
+     * Helper method to convert a EmployeeDTO into an Employee entity
+     * @param employeeDTO
+     * @return employee
+     */
     private Employee employeeDTOToEntity(EmployeeDTO employeeDTO) {
         Employee employee = new Employee();
         BeanUtils.copyProperties(employeeDTO, employee);
         return employee;
     }
 
+    /**
+     * Helper method to convert an Employee entity into an EmployeeDTO
+     * @param employee
+     * @return employeeDTO
+     */
     private EmployeeDTO entityToEmployeeDTO(Employee employee) {
         EmployeeDTO employeeDTO = new EmployeeDTO();
         BeanUtils.copyProperties(employee, employeeDTO);

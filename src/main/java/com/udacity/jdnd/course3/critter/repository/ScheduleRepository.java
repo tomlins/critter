@@ -1,8 +1,8 @@
 package com.udacity.jdnd.course3.critter.repository;
 
-import com.udacity.jdnd.course3.critter.entity.Employee;
-import com.udacity.jdnd.course3.critter.entity.Pet;
-import com.udacity.jdnd.course3.critter.entity.Schedule;
+import com.udacity.jdnd.course3.critter.domain.entity.Employee;
+import com.udacity.jdnd.course3.critter.domain.entity.Pet;
+import com.udacity.jdnd.course3.critter.domain.entity.Schedule;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
