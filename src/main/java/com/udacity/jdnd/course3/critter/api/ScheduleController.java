@@ -1,15 +1,15 @@
-package com.udacity.jdnd.course3.critter.schedule;
+package com.udacity.jdnd.course3.critter.api;
 
 import com.udacity.jdnd.course3.critter.entity.Employee;
 import com.udacity.jdnd.course3.critter.entity.Pet;
 import com.udacity.jdnd.course3.critter.entity.Schedule;
+import com.udacity.jdnd.course3.critter.schedule.ScheduleDTO;
 import com.udacity.jdnd.course3.critter.service.EmployeeService;
 import com.udacity.jdnd.course3.critter.service.PetService;
 import com.udacity.jdnd.course3.critter.service.ScheduleService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -43,15 +43,13 @@ public class ScheduleController {
 
     @GetMapping("/pet/{petId}")
     public List<ScheduleDTO> getScheduleForPet(@PathVariable long petId) {
-        Pet pet = petService.findById(petId);
-        List<Schedule> scheduleList = scheduleService.getSchedulesForPetId(pet);
+        List<Schedule> scheduleList = scheduleService.getSchedulesForPetId(petId);
         return entityArrayToScheduleDTOArray(scheduleList);
     }
 
     @GetMapping("/employee/{employeeId}")
     public List<ScheduleDTO> getScheduleForEmployee(@PathVariable long employeeId) {
-        Employee employee = employeeService.findById(employeeId);
-        List<Schedule> scheduleList = scheduleService.getSchedulesForEmployee(employee);
+        List<Schedule> scheduleList = scheduleService.getSchedulesForEmployee(employeeId);
         return entityArrayToScheduleDTOArray(scheduleList);
     }
 
